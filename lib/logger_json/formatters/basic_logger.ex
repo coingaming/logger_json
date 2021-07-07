@@ -33,6 +33,14 @@ defmodule LoggerJSON.Formatters.BasicLogger do
     data
   end
 
+  defp format_data(%DateTime{} = data) do
+    DateTime.to_iso8601(data)
+  end
+
+  defp format_data(%Date{} = data) do
+    Date.to_iso8601(data)
+  end
+
   defp format_data(%mod{} = data) do
     new_data =
       data
